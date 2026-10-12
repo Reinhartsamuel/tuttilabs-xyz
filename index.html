@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reinhart Sulilatu — smart contract engineer</title>
+    <meta
+      name="description"
+      content="Reinhart Sulilatu writes smart contracts and the off-chain services that keep them honest: escrow, verifiable randomness, settlement, and protocol keepers."
+    />
+    <link rel="canonical" href="https://tuttilabs.xyz/" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">tuttilabs<span class="brand-dim">.xyz</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">menu</button>
+      <nav class="nav" id="site-nav">
+        <a href="/work/">Work</a>
+        <a href="/writing/">Writing</a>
+        <a href="https://github.com/Reinhartsamuel">GitHub</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">LinkedIn</a>
+        <a href="https://x.com/reyyn_hart">X</a>
+      </nav>
+    </div>
+  </header>
+
+    <main>
+      <section class="hero wrap">
+        <p class="eyebrow">Smart contract engineer</p>
+        <h1>Reinhart Sulilatu</h1>
+        <p class="lede">
+          I write smart contracts and the off-chain services that keep them honest. Most of my work is
+          on EVM chains: escrow, verifiable randomness, settlement, and the keepers that push a stalled
+          protocol to its next state.
+        </p>
+        <p class="lede">
+          The backend half is the half I like. The contract is usually the smallest piece of the
+          system; the resolution keeper, the indexer, and the failure paths around it are where the
+          time actually goes.
+        </p>
+        <div class="status-line">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Lotix is live on Robinhood Chain and BSC: two deployments on two chains, both driving the same accounting engine.</span>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <h2>Work</h2>
+          <a class="more" href="/work/">All work →</a>
+        </div>
+
+        <div class="record">
+          <div class="record-meta">
+            <span>2026</span>
+            <span>Robinhood Chain</span>
+            <span>BSC</span>
+          </div>
+          <div>
+            <h3><a href="/work/#lotix">Lotix — raffle protocol</a></h3>
+            <p>
+              Raffles that hold real money. A prize is escrowed (ERC-20 or ERC-721), tickets are sold in
+              a stablecoin, and the winner comes from on-chain verifiable randomness. The host cannot
+              enter its own raffle and the operator cannot pick the winner.
+            </p>
+            <p>
+              <a href="/work/#lotix">Deployments and design notes →</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="record">
+          <div class="record-meta">
+            <span>2026</span>
+            <span>Solana</span>
+            <span>RWA</span>
+          </div>
+          <div>
+            <h3><a href="/work/#tokenforge">TokenForge — security token tooling</a></h3>
+            <p>
+              Issuance tooling for Indonesian real-world-asset issuers, built on the Solana Security
+              Token Standard with sRFC37-compliant transfer hooks.
+            </p>
+            <p>
+              <a href="https://tokenforge.tuttilabs.xyz">tokenforge.tuttilabs.xyz →</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="record">
+          <div class="record-meta">
+            <span>Ongoing</span>
+            <span>EVM</span>
+            <span>TypeScript</span>
+          </div>
+          <div>
+            <h3>How I work</h3>
+            <ul>
+              <li>Contracts in Solidity with Foundry, OpenZeppelin, and fork tests against live chain state.</li>
+              <li>Randomness through Chainlink VRF v2.5 and Quiver, with the failure path designed before the happy path.</li>
+              <li>Off-chain in TypeScript: keepers, indexers, and cron jobs that reconcile contract state.</li>
+              <li>Enough frontend to wire a contract to a UI properly, and to notice when an interface lies about what the chain will accept.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <h2>Writing</h2>
+          <a class="more" href="/writing/">All writing →</a>
+        </div>
+        <ul class="post-list">
+          <!-- RECENT:START -->
+          <li>
+            <a class="post-link" href="/writing/raffle-protocol-walkthrough/">
+              <h3 class="post-title">Verifiable Randomness Raffle Protocol: security and architecture walkthrough</h3>
+              <p class="post-summary">How the raffle contract answers the two questions that decide whether it can hold real money: who picks the winner, and whether anyone can hold the prize hostage. Written against the Robinhood Chain and BSC deployments.</p>
+              <span class="post-meta"><span>2026-10-12</span><span>21 min read</span></span>
+            </a>
+          </li>
+          <!-- RECENT:END -->
+        </ul>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <h2>Elsewhere</h2>
+        </div>
+        <div class="link-row">
+          <a href="https://github.com/Reinhartsamuel">GitHub</a>
+          <a href="https://www.linkedin.com/in/reinhartsulilatu">LinkedIn</a>
+          <a href="https://x.com/reyyn_hart">X</a>
+          <a href="mailto:smuel.rr@gmail.com">smuel.rr@gmail.com</a>
+        </div>
+      </section>
+    </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span data-year>2026</span> Reinhart Sulilatu</div>
+      <div class="footer-links">
+        <a href="https://github.com/Reinhartsamuel">github.com/Reinhartsamuel</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">linkedin.com/in/reinhartsulilatu</a>
+        <a href="https://x.com/reyyn_hart">x.com/reyyn_hart</a>
+        <a href="mailto:smuel.rr@gmail.com">smuel.rr@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

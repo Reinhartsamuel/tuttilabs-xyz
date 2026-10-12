@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Work — Reinhart Sulilatu</title>
+    <meta
+      name="description"
+      content="Raffle protocol deployments on Robinhood Chain and BSC, security token tooling on Solana, and other repositories."
+    />
+    <link rel="canonical" href="https://tuttilabs.xyz/work/" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">tuttilabs<span class="brand-dim">.xyz</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">menu</button>
+      <nav class="nav" id="site-nav">
+        <a href="/work/">Work</a>
+        <a href="/writing/">Writing</a>
+        <a href="https://github.com/Reinhartsamuel">GitHub</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">LinkedIn</a>
+        <a href="https://x.com/reyyn_hart">X</a>
+      </nav>
+    </div>
+  </header>
+
+    <main>
+      <section class="page-head wrap">
+        <p class="eyebrow">Selected work</p>
+        <h1>Contracts, keepers, and the failure paths in between</h1>
+        <p class="lede">
+          Everything here is in production or shipped under my own name. Where a contract is live, the
+          address and the explorer link are listed so anyone can check the claim.
+        </p>
+      </section>
+
+      <section class="section wrap" id="lotix">
+        <div class="record record-flush">
+          <div class="record-meta">
+            <span>2026</span>
+            <span>Robinhood Chain</span>
+            <span>BSC</span>
+            <span>Solidity · Foundry</span>
+          </div>
+          <div>
+            <h3>Lotix — verifiable raffle protocol</h3>
+            <p>
+              Anyone can create a raffle by escrowing a prize (an ERC-20 amount or an ERC-721 NFT) and
+              setting a ticket price, a ticket cap, and a duration. Entrants buy tickets in a
+              stablecoin. When the raffle expires, a draw is requested from a verifiable randomness
+              source and the winner is picked from the ticket ranges.
+            </p>
+            <p>
+              The draw is the easy part. A randomness provider can stall, a winner can be blacklisted, a
+              prize token can pause, and the contract is built so that none of those end with the prize
+              stuck on it.
+            </p>
+
+            <div class="deploys">
+              <div class="deploy">
+                <span class="deploy-name">LotteryCore</span>
+                <span class="deploy-net">Robinhood · 4663</span>
+                <span class="addr">
+                  <a href="https://robinhoodchain.blockscout.com/address/0x04491a792C82Dd66C5993b89E6E5044bF0da797d">0x04491a792C82Dd66C5993b89E6E5044bF0da797d</a>
+                  <button class="copy" type="button" data-copy="0x04491a792C82Dd66C5993b89E6E5044bF0da797d" aria-label="Copy LotteryCore address">copy</button>
+                </span>
+              </div>
+              <div class="deploy">
+                <span class="deploy-name">RaffleCore</span>
+                <span class="deploy-net">BSC · 56</span>
+                <span class="addr">
+                  <a href="https://bscscan.com/address/0xd990ca6f045f86df32c115deee4d24e4a911993b">0xd990ca6f045f86df32c115deee4d24e4a911993b</a>
+                  <button class="copy" type="button" data-copy="0xd990ca6f045f86df32c115deee4d24e4a911993b" aria-label="Copy RaffleCore address">copy</button>
+                </span>
+              </div>
+            </div>
+
+            <ul>
+              <li>
+                Two randomness backends, one accounting engine. Robinhood Chain has no Chainlink VRF
+                deployment, so it runs Quiver with a resolver-gated draw; BSC runs Chainlink VRF v2.5
+                through a permissionless upkeep.
+              </li>
+              <li>
+                Resolution is driven by keepers I operate, not by Chainlink Automation. On Robinhood
+                Chain that is a Node service with two cron jobs (resolve, then settle from the
+                randomness callback); on BSC it is a shell-driven loop.
+              </li>
+              <li>
+                Every draw request folds in a fresh salt, so a colluding randomness provider can stall a
+                raffle but cannot grind for a winner it likes.
+              </li>
+              <li>
+                Payouts are push-with-escrow-fallback: if a transfer fails, the funds move to a claimable
+                balance instead of reverting the settlement and freezing the raffle.
+              </li>
+              <li>
+                Cancelled raffles refund with O(1) pull accounting, and an underfilled raffle returns the
+                prize to the host while still drawing the ticket pool, so nobody's money is stranded.
+              </li>
+            </ul>
+
+            <div class="link-row">
+              <a href="https://github.com/Reinhartsamuel/Verifiable-Randomness-Raffle-Protocol">Source</a>
+              <a href="https://lotix.fun">lotix.fun</a>
+              <a href="/writing/raffle-protocol-walkthrough/">Design walkthrough</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap" id="tokenforge">
+        <div class="record record-flush">
+          <div class="record-meta">
+            <span>2026</span>
+            <span>Solana</span>
+            <span>RWA</span>
+          </div>
+          <div>
+            <h3>TokenForge — security token tooling</h3>
+            <p>
+              Issuance tooling for Indonesian real-world-asset issuers. It implements the Solana
+              Security Token Standard (SSTS, the Halborn and Securitize design) with sRFC37-compliant
+              transfer hooks, so a token can carry regulatory rules like transfer restrictions and
+              holder eligibility at the token layer instead of in an off-chain database.
+            </p>
+            <p>
+              The repository is private while it is used with clients. The public product site shows
+              what it does.
+            </p>
+            <div class="link-row">
+              <a href="https://tokenforge.tuttilabs.xyz">tokenforge.tuttilabs.xyz</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <h2>Other repositories</h2>
+          <a class="more" href="https://github.com/Reinhartsamuel?tab=repositories">All on GitHub →</a>
+        </div>
+        <ul class="repo-list">
+          <li>
+            <a href="https://github.com/Reinhartsamuel/clawguard">
+              <span class="name">clawguard</span>
+              <span class="desc">Transparent API proxy and firewall for AI spending: budget caps, anomaly detection, and loop prevention for agents that call paid APIs.</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Reinhartsamuel/tokenization-playbook">
+              <span class="name">tokenization-playbook</span>
+              <span class="desc">A playbook for institutions that want to issue real-world assets tradable on Indonesian exchanges, written for issuers rather than engineers.</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Reinhartsamuel/Reksadana-FE">
+              <span class="name">Reksadana-FE</span>
+              <span class="desc">Frontend for an Indonesian mutual fund product.</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Reinhartsamuel/Deflekt">
+              <span class="name">Deflekt</span>
+              <span class="desc">A browser extension that redirects doomscrolling on Instagram and TikTok to the Saved page instead of the feed.</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Reinhartsamuel/Learn-Vault-Foundry">
+              <span class="name">Learn-Vault-Foundry</span>
+              <span class="desc">Foundry test exercises built while working through ERC-4626 vault behaviour and access control.</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section wrap">
+        <div class="section-head">
+          <h2>Contact</h2>
+        </div>
+        <div class="link-row">
+          <a href="mailto:smuel.rr@gmail.com">smuel.rr@gmail.com</a>
+          <a href="https://www.linkedin.com/in/reinhartsulilatu">LinkedIn</a>
+          <a href="https://x.com/reyyn_hart">X</a>
+        </div>
+      </section>
+    </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span data-year>2026</span> Reinhart Sulilatu</div>
+      <div class="footer-links">
+        <a href="https://github.com/Reinhartsamuel">github.com/Reinhartsamuel</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">linkedin.com/in/reinhartsulilatu</a>
+        <a href="https://x.com/reyyn_hart">x.com/reyyn_hart</a>
+        <a href="mailto:smuel.rr@gmail.com">smuel.rr@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

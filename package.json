@@ -1,0 +1,21 @@
+{
+  "name": "tuttilabs-xyz",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Source for tuttilabs.xyz — portfolio and writing.",
+  "scripts": {
+    "gen": "node scripts/gen-posts.mjs",
+    "dev": "npm run gen && vite",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run gen && npm run typecheck && vite build",
+    "preview": "vite preview --port 4173",
+    "deploy": "bash scripts/deploy.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "marked": "^16.4.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7"
+  }
+}

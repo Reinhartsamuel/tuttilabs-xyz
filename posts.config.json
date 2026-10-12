@@ -1,0 +1,13 @@
+{
+  "note": "Blog sources. `sources` entries point at markdown that is authored elsewhere (single source of truth) and rendered into the site at build time; `src/content/posts/*.md` holds posts authored here.",
+  "sources": [
+    {
+      "slug": "raffle-protocol-walkthrough",
+      "title": "Verifiable Randomness Raffle Protocol: security and architecture walkthrough",
+      "date": "2026-10-12",
+      "summary": "How the raffle contract answers the two questions that decide whether it can hold real money: who picks the winner, and whether anyone can hold the prize hostage. Written against the Robinhood Chain and BSC deployments.",
+      "sourceFile": "/home/deploy/repos/Verifiable-Randomness-Raffle-Protocol/docs/walkthrough.md",
+      "sourceNote": "Adapted from the protocol repository's docs/walkthrough.md, where the draft lives next to the contracts."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Writing — Reinhart Sulilatu</title>
+    <meta
+      name="description"
+      content="Notes on smart contract design, randomness, keepers, and the failure paths that decide whether a protocol can hold real money."
+    />
+    <link rel="canonical" href="https://tuttilabs.xyz/writing/" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">tuttilabs<span class="brand-dim">.xyz</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">menu</button>
+      <nav class="nav" id="site-nav">
+        <a href="/work/">Work</a>
+        <a href="/writing/">Writing</a>
+        <a href="https://github.com/Reinhartsamuel">GitHub</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">LinkedIn</a>
+        <a href="https://x.com/reyyn_hart">X</a>
+      </nav>
+    </div>
+  </header>
+
+    <main>
+      <section class="page-head wrap">
+        <p class="eyebrow">Writing</p>
+        <h1>Notes from building on-chain systems</h1>
+        <p class="lede">
+          Long-form write-ups of work I have shipped. If a post makes a claim about a deployed
+          contract, it includes the command or the explorer link to check that claim.
+        </p>
+      </section>
+
+      <section class="section wrap">
+        <ul class="post-list">
+          <!-- POSTS:START -->
+          <li>
+            <a class="post-link" href="/writing/raffle-protocol-walkthrough/">
+              <h3 class="post-title">Verifiable Randomness Raffle Protocol: security and architecture walkthrough</h3>
+              <p class="post-summary">How the raffle contract answers the two questions that decide whether it can hold real money: who picks the winner, and whether anyone can hold the prize hostage. Written against the Robinhood Chain and BSC deployments.</p>
+              <span class="post-meta"><span>2026-10-12</span><span>21 min read</span></span>
+            </a>
+          </li>
+          <!-- POSTS:END -->
+        </ul>
+      </section>
+    </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span data-year>2026</span> Reinhart Sulilatu</div>
+      <div class="footer-links">
+        <a href="https://github.com/Reinhartsamuel">github.com/Reinhartsamuel</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">linkedin.com/in/reinhartsulilatu</a>
+        <a href="https://x.com/reyyn_hart">x.com/reyyn_hart</a>
+        <a href="mailto:smuel.rr@gmail.com">smuel.rr@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
