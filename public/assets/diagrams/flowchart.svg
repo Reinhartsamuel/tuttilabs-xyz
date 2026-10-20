@@ -1,0 +1,44 @@
+<svg width="700" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .box { fill: #0e0f11; stroke: rgba(255,255,255,0.18); stroke-width: 1; rx: 6; }
+      .text { font-family: 'Geist Mono', monospace; font-size: 10px; fill: #ededed; }
+      .arrow { stroke: rgba(255,255,255,0.3); stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.3)" />
+    </marker>
+  </defs>
+  
+  <text x="350" y="30" font-family="system-ui, -apple-system" font-size="14" font-weight="600" text-anchor="middle" fill="#ededed">Raffle Flow</text>
+  
+  <rect x="275" y="60" width="150" height="40" class="box"/>
+  <text x="350" y="84" class="text" text-anchor="middle">Create Raffle</text>
+  
+  <line x1="350" y1="100" x2="350" y2="130" class="arrow"/>
+  
+  <rect x="275" y="130" width="150" height="40" class="box"/>
+  <text x="350" y="154" class="text" text-anchor="middle">Buy Tickets</text>
+  
+  <line x1="350" y1="170" x2="350" y2="200" class="arrow"/>
+  
+  <rect x="275" y="200" width="150" height="40" class="box"/>
+  <text x="350" y="224" class="text" text-anchor="middle">Raffle Expires</text>
+  
+  <line x1="350" y1="240" x2="350" y2="270" class="arrow"/>
+  
+  <rect x="275" y="270" width="150" height="40" class="box"/>
+  <text x="350" y="294" class="text" text-anchor="middle">Request VRF Draw</text>
+  
+  <line x1="350" y1="310" x2="350" y2="340" class="arrow"/>
+  
+  <rect x="275" y="340" width="150" height="40" class="box"/>
+  <text x="350" y="364" class="text" text-anchor="middle">VRF Callback</text>
+  
+  <line x1="350" y1="380" x2="350" y2="410" class="arrow"/>
+  
+  <rect x="275" y="410" width="150" height="40" class="box"/>
+  <text x="350" y="434" class="text" text-anchor="middle">Select Winner & Settle</text>
+  
+  <text x="350" y="480" font-family="Geist Mono, monospace" font-size="9" text-anchor="middle" fill="#6c6c6c">Push payout with escrow fallback</text>
+</svg>

@@ -44,6 +44,19 @@
         </p>
       </section>
 
+
+      <section class="section wrap">
+        <div class="section-head">
+          <h2>Technologies</h2>
+        </div>
+        <div class="logos-section">
+          <img src="/assets/logos/chainlink.svg" alt="Chainlink" />
+          <img src="/assets/logos/quiver-vrf.svg" alt="Quiver VRF" />
+          <img src="/assets/logos/bsc.svg" alt="BSC" />
+          <img src="/assets/logos/usdc.svg" alt="USDC" />
+        </div>
+      </section>
+
       <section class="section wrap" id="lotix">
         <div class="record record-flush">
           <div class="record-meta">
@@ -91,6 +104,11 @@
                 deployment, so it runs Quiver with a resolver-gated draw; BSC runs Chainlink VRF v2.5
                 through a permissionless upkeep.
               </li>
+
+            <div style="margin: 24px 0;">
+              <h4 style="font-size: 13px; font-weight: 600; margin: 0 0 12px; color: var(--fg-dim); font-family: var(--mono);">Architecture</h4>
+              <img src="/assets/diagrams/architecture.svg" alt="Lotix Architecture" style="width: 100%; border: 1px solid var(--line); border-radius: 6px; background: var(--bg-raised);" />
+            </div>
               <li>
                 Resolution is driven by keepers I operate, not by Chainlink Automation. On Robinhood
                 Chain that is a Node service with two cron jobs (resolve, then settle from the

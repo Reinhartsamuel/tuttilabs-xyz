@@ -1,0 +1,8 @@
+<svg width="80" height="40" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <rect x="2" y="8" width="24" height="24" rx="12" fill="#2775ca" />
+    <text x="14" y="22" font-family="system-ui, -apple-system" font-size="9" font-weight="700" text-anchor="middle" fill="#fff">USD</text>
+    <text x="14" y="26" font-family="system-ui, -apple-system" font-size="6" text-anchor="middle" fill="#fff">C</text>
+    <text x="32" y="22" font-family="system-ui, -apple-system" font-size="12" font-weight="600" fill="#ededed">USDC</text>
+  </g>
+</svg>

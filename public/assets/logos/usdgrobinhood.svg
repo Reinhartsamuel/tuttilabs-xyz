@@ -1,0 +1,8 @@
+<svg width="120" height="40" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <rect x="0" y="6" width="28" height="28" rx="6" fill="#4bd07f" />
+    <text x="14" y="24" font-family="system-ui, -apple-system" font-size="14" font-weight="700" text-anchor="middle" fill="#08090a">$</text>
+    <text x="36" y="19" font-family="system-ui, -apple-system" font-size="12" font-weight="600" fill="#ededed">USD</text>
+    <text x="36" y="31" font-family="system-ui, -apple-system" font-size="10" fill="#9d9d9d" letter-spacing="-0.2">GROBINHOOD</text>
+  </g>
+</svg>
