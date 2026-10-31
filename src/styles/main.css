@@ -22,7 +22,7 @@
   --mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
 
   --wrap: 1080px;
-  --pad: 24px;
+  --pad: 32px;
 
   --step: 8px;
   --radius: 6px;
@@ -613,7 +613,7 @@ main { display: block; }
 /* ---------- responsive ---------- */
 
 @media (max-width: 720px) {
-  :root { --pad: 18px; }
+  :root { --pad: 20px; }
 
   .nav { display: none; }
   .nav[data-open='true'] {
