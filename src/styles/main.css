@@ -653,6 +653,44 @@ main { display: block; }
 
 .article-foot a { color: var(--fg-dim); }
 
+/* ---------- work landing thumbnail ---------- */
+
+.work-landing {
+  margin: 24px 0 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+  overflow: hidden;
+}
+
+.work-landing img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 360px;
+}
+
+.work-landing-caption {
+  margin: 0;
+  padding: 10px 16px;
+  font-size: 12px;
+  color: var(--fg-dim);
+  font-family: var(--mono);
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.work-landing-caption a {
+  color: var(--fg-dim);
+  text-decoration: none;
+}
+
+.work-landing-caption a:hover {
+  color: var(--fg);
+  text-decoration: underline;
+}
+
 /* ---------- footer ---------- */
 
 .site-footer {
