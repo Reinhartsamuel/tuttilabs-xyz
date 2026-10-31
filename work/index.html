@@ -163,6 +163,38 @@
         </div>
       </section>
 
+      <section class="section wrap" id="cuantum">
+        <div class="record record-flush">
+          <div class="record-meta">
+            <span>2026</span>
+            <span>Node.js · Next.js · MongoDB</span>
+            <span>PM2 · Nginx</span>
+          </div>
+          <div>
+            <h3>Cuantum — crypto copy-trading platform</h3>
+            <p>
+              A full-stack platform for signal-based copy trading across centralized exchanges. The backend
+              ingests TradingView webhooks and strategy engine signals (Pine Script → Node), routes them
+              to follower accounts via CCXT with per-exchange credential isolation, and manages the full
+              order lifecycle: entry, take-profit (per-entry, OB-based, multi-level), stop-loss, and PnL
+              harvesting with automated fee collection.
+            </p>
+            <p>
+              Key engineering work: fixed a 1.5 GB heap leak from unbounded CCXT instance creation by
+              introducing credential-keyed instance caching with TTL eviction; eliminated cascading RPC
+              rate-limit storms in the BSC deposit watcher with a scan guard and exponential backoff;
+              added per-bar signal deduplication to the V2 strategy engine so 4H strategies fire once per
+              bar instead of every 5 seconds; implemented OB-based and multi-level TP delegation on the
+              runner path (previously only in the webhook path). Deployed on VPS with Nginx + PM2 at
+              <code>cuantum.tuttilabs.xyz</code>.
+            </p>
+            <div class="link-row">
+              <a href="https://cuantum.tuttilabs.xyz">cuantum.tuttilabs.xyz</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section wrap">
         <div class="section-head">
           <h2>Other repositories</h2>
