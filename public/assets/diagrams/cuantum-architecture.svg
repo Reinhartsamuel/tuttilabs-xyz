@@ -1,0 +1,107 @@
+<svg width="1100" height="640" viewBox="0 0 1100 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .band { fill: rgba(255,255,255,0.015); stroke: rgba(255,255,255,0.08); stroke-width: 1; rx: 8; }
+      .bandlabel { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.14em; fill: #6c6c6c; }
+      .box { fill: #0e0f11; stroke: rgba(255,255,255,0.18); stroke-width: 1; rx: 6; }
+      .box-accent { fill: #101317; stroke: rgba(77,156,246,0.45); stroke-width: 1; rx: 6; }
+      .box-store { fill: #0d1210; stroke: rgba(75,208,127,0.35); stroke-width: 1; rx: 6; }
+      .text { font-family: 'Geist Mono', monospace; font-size: 11.5px; fill: #ededed; }
+      .subtext { font-family: 'Geist Mono', monospace; font-size: 9px; fill: #9d9d9d; }
+      .arrow { stroke: rgba(255,255,255,0.28); stroke-width: 1.4; fill: none; marker-end: url(#ah); }
+      .arrow-green { stroke: rgba(75,208,127,0.45); stroke-width: 1.4; fill: none; marker-end: url(#ahg); }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.28)" />
+    </marker>
+    <marker id="ahg" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="rgba(75,208,127,0.45)" />
+    </marker>
+  </defs>
+
+  <text x="550" y="30" font-family="system-ui, -apple-system" font-size="14" font-weight="600" text-anchor="middle" fill="#ededed">Cuantum — System Architecture</text>
+
+  <!-- Bands -->
+  <rect x="24" y="56" width="272" height="540" class="band"/>
+  <rect x="316" y="56" width="432" height="540" class="band"/>
+  <rect x="768" y="56" width="308" height="540" class="band"/>
+  <text x="40" y="78" class="bandlabel">CLIENTS</text>
+  <text x="332" y="78" class="bandlabel">BACKEND · NODE.JS / EXPRESS</text>
+  <text x="784" y="78" class="bandlabel">EXTERNAL SERVICES</text>
+
+  <!-- Clients -->
+  <rect x="44" y="96" width="232" height="72" class="box"/>
+  <text x="160" y="122" class="text" text-anchor="middle">Web App</text>
+  <text x="160" y="140" class="subtext" text-anchor="middle">Next.js 14 · React 18 · Tailwind</text>
+
+  <rect x="44" y="192" width="232" height="72" class="box"/>
+  <text x="160" y="218" class="text" text-anchor="middle">TradingView Alerts</text>
+  <text x="160" y="236" class="subtext" text-anchor="middle">Pine Script · webhooks</text>
+
+  <rect x="44" y="288" width="232" height="72" class="box"/>
+  <text x="160" y="314" class="text" text-anchor="middle">Admin Console</text>
+  <text x="160" y="332" class="subtext" text-anchor="middle">users · deposits · config</text>
+
+  <rect x="44" y="384" width="232" height="72" class="box"/>
+  <text x="160" y="410" class="text" text-anchor="middle">BSC Deposits</text>
+  <text x="160" y="428" class="subtext" text-anchor="middle">USDT / BEP20 wallets</text>
+
+  <!-- Backend -->
+  <rect x="336" y="96" width="392" height="64" class="box-accent"/>
+  <text x="532" y="122" class="text" text-anchor="middle">Express API</text>
+  <text x="532" y="140" class="subtext" text-anchor="middle">REST + SSE · JWT auth · CORS</text>
+
+  <rect x="336" y="184" width="392" height="64" class="box"/>
+  <text x="532" y="210" class="text" text-anchor="middle">Strategy Runner</text>
+  <text x="532" y="228" class="subtext" text-anchor="middle">V2 / V3 / Grid-ATR · per-bar dedupe</text>
+
+  <rect x="336" y="272" width="392" height="64" class="box"/>
+  <text x="532" y="298" class="text" text-anchor="middle">Exec Engine / Order Router</text>
+  <text x="532" y="316" class="subtext" text-anchor="middle">CCXT orders · follower sizing · risk</text>
+
+  <rect x="336" y="360" width="392" height="64" class="box"/>
+  <text x="532" y="386" class="text" text-anchor="middle">TP Manager · PnL Harvester</text>
+  <text x="532" y="404" class="subtext" text-anchor="middle">OB / multi-level TP · fee settlement</text>
+
+  <rect x="336" y="448" width="392" height="72" class="box"/>
+  <text x="532" y="474" class="text" text-anchor="middle">Background Workers</text>
+  <text x="532" y="492" class="subtext" text-anchor="middle">deposit watcher · sweeper · reconciler</text>
+
+  <!-- External -->
+  <rect x="788" y="96" width="268" height="80" class="box"/>
+  <text x="922" y="124" class="text" text-anchor="middle">CEX Venues (CCXT)</text>
+  <text x="922" y="142" class="subtext" text-anchor="middle">Binance · Bybit · OKX · Bitget</text>
+  <text x="922" y="158" class="subtext" text-anchor="middle">futures + spot</text>
+
+  <rect x="788" y="204" width="268" height="72" class="box-store"/>
+  <text x="922" y="230" class="text" text-anchor="middle">MongoDB Atlas</text>
+  <text x="922" y="248" class="subtext" text-anchor="middle">users · strategies · orders</text>
+
+  <rect x="788" y="304" width="268" height="80" class="box"/>
+  <text x="922" y="332" class="text" text-anchor="middle">BSC / BEP20 RPC</text>
+  <text x="922" y="350" class="subtext" text-anchor="middle">eth_getLogs · sweeps</text>
+  <text x="922" y="366" class="subtext" text-anchor="middle">USDT deposits</text>
+
+  <rect x="788" y="412" width="268" height="64" class="box"/>
+  <text x="922" y="438" class="text" text-anchor="middle">SMTP</text>
+  <text x="922" y="456" class="subtext" text-anchor="middle">transactional mail</text>
+
+  <!-- Arrows clients -> api -->
+  <line x1="276" y1="132" x2="336" y2="128" class="arrow"/>
+  <line x1="276" y1="228" x2="336" y2="140" class="arrow"/>
+  <line x1="276" y1="324" x2="336" y2="150" class="arrow"/>
+  <line x1="276" y1="420" x2="336" y2="484" class="arrow"/>
+
+  <!-- Backend internal flow -->
+  <line x1="532" y1="160" x2="532" y2="184" class="arrow"/>
+  <line x1="532" y1="248" x2="532" y2="272" class="arrow"/>
+  <line x1="532" y1="336" x2="532" y2="360" class="arrow"/>
+
+  <!-- Backend -> external -->
+  <line x1="728" y1="136" x2="788" y2="136" class="arrow"/>
+  <line x1="728" y1="300" x2="788" y2="240" class="arrow-green"/>
+  <line x1="728" y1="484" x2="788" y2="344" class="arrow"/>
+  <line x1="728" y1="392" x2="788" y2="444" class="arrow-green"/>
+
+  <text x="550" y="620" font-family="Geist Mono, monospace" font-size="10" text-anchor="middle" fill="#6c6c6c">Signals in → risk-checked orders out → PnL settled · single-writer workers · self-hosted on VPS</text>
+</svg>

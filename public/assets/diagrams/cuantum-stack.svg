@@ -1,0 +1,75 @@
+<svg width="1100" height="640" viewBox="0 0 1100 640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .card { fill: #0e0f11; stroke: rgba(255,255,255,0.14); stroke-width: 1; rx: 8; }
+      .cat { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.12em; fill: #6c6c6c; }
+      .chip { fill: #121418; stroke: rgba(255,255,255,0.14); stroke-width: 1; rx: 5; }
+      .chiptxt { font-family: 'Geist Mono', monospace; font-size: 11px; fill: #dedede; }
+    </style>
+  </defs>
+
+  <text x="550" y="30" font-family="system-ui, -apple-system" font-size="14" font-weight="600" text-anchor="middle" fill="#ededed">Cuantum — Stack</text>
+
+  <!-- Frontend -->
+  <rect x="40" y="64" width="320" height="170" class="card"/>
+  <text x="58" y="88" class="cat">FRONTEND</text>
+  <rect x="58" y="104" width="120" height="30" class="chip"/><text x="70" y="124" class="chiptxt">Next.js 14</text>
+  <rect x="188" y="104" width="120" height="30" class="chip"/><text x="200" y="124" class="chiptxt">React 18</text>
+  <rect x="58" y="144" width="120" height="30" class="chip"/><text x="70" y="164" class="chiptxt">Tailwind CSS 4</text>
+  <rect x="188" y="144" width="120" height="30" class="chip"/><text x="200" y="164" class="chiptxt">Lucide</text>
+  <rect x="58" y="184" width="120" height="30" class="chip"/><text x="70" y="204" class="chiptxt">SSE client</text>
+  <rect x="188" y="184" width="120" height="30" class="chip"/><text x="200" y="204" class="chiptxt">html2canvas</text>
+
+  <!-- Backend -->
+  <rect x="390" y="64" width="320" height="170" class="card"/>
+  <text x="408" y="88" class="cat">BACKEND</text>
+  <rect x="408" y="104" width="120" height="30" class="chip"/><text x="420" y="124" class="chiptxt">Node.js 20+</text>
+  <rect x="538" y="104" width="120" height="30" class="chip"/><text x="550" y="124" class="chiptxt">Express 4</text>
+  <rect x="408" y="144" width="120" height="30" class="chip"/><text x="420" y="164" class="chiptxt">JWT · bcrypt</text>
+  <rect x="538" y="144" width="120" height="30" class="chip"/><text x="550" y="164" class="chiptxt">Nodemailer</text>
+  <rect x="408" y="184" width="120" height="30" class="chip"/><text x="420" y="204" class="chiptxt">node-fetch</text>
+  <rect x="538" y="184" width="120" height="30" class="chip"/><text x="550" y="204" class="chiptxt">dotenv</text>
+
+  <!-- Trading -->
+  <rect x="740" y="64" width="320" height="170" class="card"/>
+  <text x="758" y="88" class="cat">TRADING ENGINE</text>
+  <rect x="758" y="104" width="120" height="30" class="chip"/><text x="770" y="124" class="chiptxt">CCXT 4</text>
+  <rect x="888" y="104" width="154" height="30" class="chip"/><text x="900" y="124" class="chiptxt">Binance connector</text>
+  <rect x="758" y="144" width="120" height="30" class="chip"/><text x="770" y="164" class="chiptxt">Pine Script</text>
+  <rect x="888" y="144" width="154" height="30" class="chip"/><text x="900" y="164" class="chiptxt">V2 / V3 / Grid-ATR</text>
+  <rect x="758" y="184" width="120" height="30" class="chip"/><text x="770" y="204" class="chiptxt">TP: OB / 3-level</text>
+  <rect x="888" y="184" width="154" height="30" class="chip"/><text x="900" y="204" class="chiptxt">Per-bar dedupe</text>
+
+  <!-- Data -->
+  <rect x="40" y="258" width="320" height="170" class="card"/>
+  <text x="58" y="282" class="cat">DATA</text>
+  <rect x="58" y="298" width="140" height="30" class="chip"/><text x="70" y="318" class="chiptxt">MongoDB Atlas</text>
+  <rect x="208" y="298" width="120" height="30" class="chip"/><text x="220" y="318" class="chiptxt">Mongoose 8</text>
+  <rect x="58" y="338" width="140" height="30" class="chip"/><text x="70" y="358" class="chiptxt">Indexed collections</text>
+  <rect x="208" y="338" width="120" height="30" class="chip"/><text x="220" y="358" class="chiptxt">Ledger models</text>
+  <rect x="58" y="378" width="140" height="30" class="chip"/><text x="70" y="398" class="chiptxt">StrategyState JSON</text>
+  <rect x="208" y="378" width="120" height="30" class="chip"/><text x="220" y="398" class="chiptxt">Idempotency keys</text>
+
+  <!-- Chain -->
+  <rect x="390" y="258" width="320" height="170" class="card"/>
+  <text x="408" y="282" class="cat">CHAIN</text>
+  <rect x="408" y="298" width="140" height="30" class="chip"/><text x="420" y="318" class="chiptxt">ethers v6</text>
+  <rect x="558" y="298" width="120" height="30" class="chip"/><text x="570" y="318" class="chiptxt">BSC / BEP20</text>
+  <rect x="408" y="338" width="140" height="30" class="chip"/><text x="420" y="358" class="chiptxt">USDT deposits</text>
+  <rect x="558" y="338" width="120" height="30" class="chip"/><text x="570" y="358" class="chiptxt">eth_getLogs</text>
+  <rect x="408" y="378" width="140" height="30" class="chip"/><text x="420" y="398" class="chiptxt">HD deposit addrs</text>
+  <rect x="558" y="378" width="120" height="30" class="chip"/><text x="570" y="398" class="chiptxt">Treasury sweeps</text>
+
+  <!-- Infra -->
+  <rect x="740" y="258" width="320" height="170" class="card"/>
+  <text x="758" y="282" class="cat">INFRA</text>
+  <rect x="758" y="298" width="120" height="30" class="chip"/><text x="770" y="318" class="chiptxt">PM2</text>
+  <rect x="888" y="298" width="154" height="30" class="chip"/><text x="900" y="318" class="chiptxt">Nginx reverse proxy</text>
+  <rect x="758" y="338" width="120" height="30" class="chip"/><text x="770" y="358" class="chiptxt">Let's Encrypt</text>
+  <rect x="888" y="338" width="154" height="30" class="chip"/><text x="900" y="358" class="chiptxt">VPS (Linux)</text>
+  <rect x="758" y="378" width="120" height="30" class="chip"/><text x="770" y="398" class="chiptxt">Vercel (FE)</text>
+  <rect x="888" y="378" width="154" height="30" class="chip"/><text x="900" y="398" class="chiptxt">Health checks</text>
+
+  <text x="550" y="478" font-family="Geist Mono, monospace" font-size="10" text-anchor="middle" fill="#6c6c6c">Frontend on Vercel · API + workers + watcher co-located on one VPS · single-writer background jobs</text>
+  <text x="550" y="500" font-family="Geist Mono, monospace" font-size="10" text-anchor="middle" fill="#6c6c6c">REST for reads, Server-Sent Events for live positions, webhooks for TradingView alerts</text>
+</svg>

@@ -50,10 +50,30 @@
           <h2>Technologies</h2>
         </div>
         <div class="logos-section">
-          <img src="/assets/logos/chainlink.svg" alt="Chainlink" />
-          <img src="/assets/logos/quiver-vrf.svg" alt="Quiver VRF" />
-          <img src="/assets/logos/bsc.svg" alt="BSC" />
-          <img src="/assets/logos/usdc.svg" alt="USDC" />
+          <div class="logo-item">
+            <img src="/assets/logos/chainlink.svg" alt="Chainlink" />
+            <span>Chainlink</span>
+          </div>
+          <div class="logo-item">
+            <img src="/assets/logos/quiver.png" alt="Quiver" />
+            <span>Quiver</span>
+          </div>
+          <div class="logo-item">
+            <img src="/assets/logos/bsc.svg" alt="BSC" />
+            <span>BSC</span>
+          </div>
+          <div class="logo-item">
+            <img src="/assets/logos/usdc.svg" alt="USDC" />
+            <span>USDC</span>
+          </div>
+          <div class="logo-item">
+            <img src="/assets/logos/usdg.webp" alt="USDG" />
+            <span>USDG</span>
+          </div>
+          <div class="logo-item">
+            <img src="/assets/logos/robinhood.png" alt="Robinhood" />
+            <span>Robinhood</span>
+          </div>
         </div>
       </section>
 
@@ -192,6 +212,45 @@
               <a href="https://app.cuantum.tuttilabs.xyz">app.cuantum.tuttilabs.xyz</a>
               <a href="https://cuantum.tuttilabs.xyz">API: cuantum.tuttilabs.xyz</a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap" id="cuantum-diagrams">
+        <div class="section-head">
+          <h2>Cuantum — architecture, data, and stack</h2>
+        </div>
+        <div class="diagrams-section">
+          <div class="diagram-card">
+            <h3>System Architecture</h3>
+            <img src="/assets/diagrams/cuantum-architecture.svg" alt="Cuantum system architecture: clients, Express API, strategy runner, exec engine, workers, and external services" />
+            <p class="diagram-caption">
+              Clients (Next.js app, TradingView alerts, admin console) call the Express API over REST and SSE.
+              The strategy runner evaluates V2/V3/Grid-ATR engines with per-bar dedupe, the exec engine routes
+              risk-checked orders to exchanges through CCXT, and background workers own deposit watching,
+              sweeping, and reconciliation. One box runs the single-writer workers so deposits and PnL are
+              never credited twice.
+            </p>
+          </div>
+          <div class="diagram-card">
+            <h3>Database Schema</h3>
+            <img src="/assets/diagrams/cuantum-schema.svg" alt="Cuantum MongoDB schema: User, ExchangeAccount, Strategy, Follower, Order, Signal, FollowerFill, and money ledger collections" />
+            <p class="diagram-caption">
+              Fourteen Mongoose collections. The core chain is User → ExchangeAccount / Follower / Strategy,
+              with Follower binding a user, a strategy, and an exchange account together under explicit capital
+              and leverage limits. Orders and signals hang off strategies and followers. A separate money layer
+              (Deposit, UserCredit, CreditTxn, ProfitLog, WithdrawalRequest) keeps balances and fee settlement
+              auditable and idempotent.
+            </p>
+          </div>
+          <div class="diagram-card">
+            <h3>Stack</h3>
+            <img src="/assets/diagrams/cuantum-stack.svg" alt="Cuantum tech stack: Next.js frontend, Node/Express backend, CCXT trading engine, MongoDB data layer, ethers v6 on BSC, PM2 and Nginx infrastructure" />
+            <p class="diagram-caption">
+              Next.js 14 on the frontend; Node.js and Express on the backend; CCXT plus a Pine Script-derived
+              engine layer for trading; MongoDB Atlas via Mongoose for data; ethers v6 against BSC for deposits;
+              PM2, Nginx, and Let's Encrypt on the VPS.
+            </p>
           </div>
         </div>
       </section>

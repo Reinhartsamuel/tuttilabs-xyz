@@ -1,0 +1,206 @@
+<svg width="1120" height="900" viewBox="0 0 1120 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .tbl { fill: #0e0f11; stroke: rgba(255,255,255,0.16); stroke-width: 1; rx: 6; }
+      .tbl-core { fill: #101318; stroke: rgba(77,156,246,0.5); stroke-width: 1; rx: 6; }
+      .tbl-money { fill: #0d1210; stroke: rgba(75,208,127,0.35); stroke-width: 1; rx: 6; }
+      .name { font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; fill: #ededed; }
+      .fld { font-family: 'Geist Mono', monospace; font-size: 9.5px; fill: #9d9d9d; }
+      .pk { fill: #4d9cf6; }
+      .fk { fill: #4bd07f; }
+      .rel { stroke: rgba(255,255,255,0.22); stroke-width: 1.2; fill: none; marker-end: url(#ah); }
+      .rellbl { font-family: 'Geist Mono', monospace; font-size: 8.5px; fill: #6c6c6c; }
+    </style>
+    <marker id="ah" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="rgba(255,255,255,0.22)" />
+    </marker>
+  </defs>
+
+  <text x="560" y="28" font-family="system-ui, -apple-system" font-size="14" font-weight="600" text-anchor="middle" fill="#ededed">Cuantum — MongoDB Schema</text>
+  <text x="560" y="46" font-family="Geist Mono, monospace" font-size="9" text-anchor="middle" fill="#6c6c6c">Mongoose collections · blue = identity/core · green = money/ledger</text>
+
+  <!-- Row 1: User / ExchangeAccount / Strategy -->
+  <g>
+    <rect x="40" y="70" width="300" height="118" class="tbl-core"/>
+    <text x="56" y="92" class="name">User</text>
+    <text x="56" y="110" class="fld"><tspan class="pk">_id</tspan> · email (unique)</text>
+    <text x="56" y="126" class="fld">passwordHash · role · status</text>
+    <text x="56" y="142" class="fld">credits · subscriptionPlan</text>
+    <text x="56" y="158" class="fld">referralCode · referrer → User</text>
+    <text x="56" y="174" class="fld">maxRunningBots · maxStrategies</text>
+  </g>
+
+  <g>
+    <rect x="410" y="70" width="300" height="118" class="tbl"/>
+    <text x="426" y="92" class="name">ExchangeAccount</text>
+    <text x="426" y="110" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">user</tspan> → User</text>
+    <text x="426" y="126" class="fld">venue (binance/bybit/okx/bitget)</text>
+    <text x="426" y="142" class="fld">accountType · label · enabled</text>
+    <text x="426" y="158" class="fld">apiKey · apiSecret · apiPass</text>
+    <text x="426" y="174" class="fld">index: { user, venue }</text>
+  </g>
+
+  <g>
+    <rect x="780" y="70" width="300" height="118" class="tbl"/>
+    <text x="796" y="92" class="name">Strategy</text>
+    <text x="796" y="110" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">owner</tspan> → User</text>
+    <text x="796" y="126" class="fld">name · source · status</text>
+    <text x="796" y="142" class="fld">tp_rules (per_entry/ob/3level)</text>
+    <text x="796" y="158" class="fld">config · timeframe · marketType</text>
+    <text x="796" y="174" class="fld">isPublic · roi24m · subscribers</text>
+  </g>
+
+  <!-- Row 2: Follower / StrategyState / StrategyAnalytics -->
+  <g>
+    <rect x="40" y="236" width="300" height="134" class="tbl"/>
+    <text x="56" y="258" class="name">Follower</text>
+    <text x="56" y="276" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">user</tspan> → User</text>
+    <text x="56" y="292" class="fld"><tspan class="fk">strategy</tspan> → Strategy</text>
+    <text x="56" y="308" class="fld"><tspan class="fk">exchangeAccount</tspan> → ExchangeAccount</text>
+    <text x="56" y="324" class="fld">capitalUSD · leverage · marginMode</text>
+    <text x="56" y="340" class="fld">enabled · status · maxDrawdown%</text>
+    <text x="56" y="356" class="fld">tp/sl pct · settings (Mixed)</text>
+  </g>
+
+  <g>
+    <rect x="410" y="236" width="300" height="134" class="tbl"/>
+    <text x="426" y="258" class="name">StrategyState</text>
+    <text x="426" y="276" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">strategyId</tspan> → Strategy</text>
+    <text x="426" y="292" class="fld">json (Mixed) · lastPrice</text>
+    <text x="426" y="308" class="fld">lastHeartbeat · counters</text>
+    <text x="426" y="324" class="fld">per-bar dedupe markers</text>
+    <text x="426" y="340" class="fld">(bar_ts / side)</text>
+  </g>
+
+  <g>
+    <rect x="780" y="236" width="300" height="134" class="tbl"/>
+    <text x="796" y="258" class="name">StrategyAnalytics</text>
+    <text x="796" y="276" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">strategy</tspan> → Strategy</text>
+    <text x="796" y="292" class="fld">roi24h · roi7d · roiAll</text>
+    <text x="796" y="308" class="fld">winRate · totalTrades</text>
+    <text x="796" y="324" class="fld">profitFactor · maxDrawdown</text>
+    <text x="796" y="340" class="fld">updatedAt</text>
+  </g>
+
+  <!-- Row 3: Order / Signal / FollowerFill -->
+  <g>
+    <rect x="40" y="418" width="300" height="150" class="tbl"/>
+    <text x="56" y="440" class="name">Order</text>
+    <text x="56" y="458" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">follower</tspan> → Follower</text>
+    <text x="56" y="474" class="fld"><tspan class="fk">strategy</tspan> → Strategy · signal</text>
+    <text x="56" y="490" class="fld">symbol · side · qty · price</text>
+    <text x="56" y="506" class="fld">status · tag (entry/tp/sl)</text>
+    <text x="56" y="522" class="fld">venueOrderId · reduceOnly</text>
+    <text x="56" y="538" class="fld">realizedPnl · feeCharged · pnlSettled</text>
+    <text x="56" y="554" class="fld">linkedTp → Order (self)</text>
+  </g>
+
+  <g>
+    <rect x="410" y="418" width="300" height="150" class="tbl"/>
+    <text x="426" y="440" class="name">Signal</text>
+    <text x="426" y="458" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">strategy</tspan> → Strategy</text>
+    <text x="426" y="474" class="fld">source (cuanterus_v2/v3/tv)</text>
+    <text x="426" y="490" class="fld">type (entry/lay/tp/sl/skip)</text>
+    <text x="426" y="506" class="fld">side · symbol · timeframe</text>
+    <text x="426" y="522" class="fld">price · qty · barTs</text>
+    <text x="426" y="538" class="fld">mode (live/signal-only)</text>
+    <text x="426" y="554" class="fld">detail · meta · payload</text>
+  </g>
+
+  <g>
+    <rect x="780" y="418" width="300" height="150" class="tbl"/>
+    <text x="796" y="440" class="name">FollowerFill</text>
+    <text x="796" y="458" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">follower</tspan> → Follower</text>
+    <text x="796" y="474" class="fld">symbol</text>
+    <text x="796" y="490" class="fld">buyLegs[] {orderId, price, qty}</text>
+    <text x="796" y="506" class="fld">sellLegs[] {orderId, price, qty}</text>
+    <text x="796" y="522" class="fld">lastSingleTPIds[] · lastMassTPId</text>
+    <text x="796" y="538" class="fld">index: { follower, symbol } unique</text>
+  </g>
+
+  <!-- Row 4: Deposit / UserCredit+CreditTxn / ProfitLog -->
+  <g>
+    <rect x="40" y="616" width="300" height="118" class="tbl-money"/>
+    <text x="56" y="638" class="name">Deposit</text>
+    <text x="56" y="656" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">user</tspan> → User</text>
+    <text x="56" y="672" class="fld">method (USDT/BANK/DUITKU)</text>
+    <text x="56" y="688" class="fld">amount · currency · status</text>
+    <text x="56" y="704" class="fld">txHash · auto · meta</text>
+    <text x="56" y="720" class="fld">approvedBy / rejectedBy → User</text>
+  </g>
+
+  <g>
+    <rect x="410" y="616" width="300" height="118" class="tbl-money"/>
+    <text x="426" y="638" class="name">UserCredit · CreditTxn</text>
+    <text x="426" y="656" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">user</tspan> → User</text>
+    <text x="426" y="672" class="fld">balance · currency</text>
+    <text x="426" y="688" class="fld">CreditTxn: type (deposit/fee/adjust)</text>
+    <text x="426" y="704" class="fld">amount (+/-) · meta</text>
+  </g>
+
+  <g>
+    <rect x="780" y="616" width="300" height="118" class="tbl-money"/>
+    <text x="796" y="638" class="name">ProfitLog</text>
+    <text x="796" y="656" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">user</tspan> → User</text>
+    <text x="796" y="672" class="fld"><tspan class="fk">follower</tspan> → Follower · <tspan class="fk">strategy</tspan> → Strategy</text>
+    <text x="796" y="688" class="fld">profitUsd · feeCharged</text>
+    <text x="796" y="704" class="fld">balanceAfter · tradeTime</text>
+    <text x="796" y="720" class="fld">orderId (idempotency)</text>
+  </g>
+
+  <!-- Row 5: WithdrawalRequest / UserDepositAddress / PlatformConfig -->
+  <g>
+    <rect x="40" y="770" width="300" height="104" class="tbl-money"/>
+    <text x="56" y="792" class="name">WithdrawalRequest</text>
+    <text x="56" y="810" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">user</tspan> → User</text>
+    <text x="56" y="826" class="fld">amount · address · network</text>
+    <text x="56" y="842" class="fld">status (pending/approved/rejected)</text>
+    <text x="56" y="858" class="fld">txHash · adminNote</text>
+  </g>
+
+  <g>
+    <rect x="410" y="770" width="300" height="104" class="tbl-money"/>
+    <text x="426" y="792" class="name">UserDepositAddress</text>
+    <text x="426" y="810" class="fld"><tspan class="pk">_id</tspan> · <tspan class="fk">user</tspan> → User</text>
+    <text x="426" y="826" class="fld">network (BEP20) · address (unique)</text>
+    <text x="426" y="842" class="fld">derivationIndex (unique)</text>
+    <text x="426" y="858" class="fld">lastSweepAt · sweeping</text>
+  </g>
+
+  <g>
+    <rect x="780" y="770" width="300" height="104" class="tbl"/>
+    <text x="796" y="792" class="name">PlatformConfig</text>
+    <text x="796" y="810" class="fld">profitFeePct · basicFeePct · proFeePct</text>
+    <text x="796" y="826" class="fld">referralRewardPct · minWithdrawal</text>
+    <text x="796" y="842" class="fld">idrRate · duitku config</text>
+    <text x="796" y="858" class="fld">ads[] · pricing</text>
+  </g>
+
+  <!-- Relationships -->
+  <line x1="340" y1="129" x2="410" y2="129" class="rel"/>
+  <text x="352" y="122" class="rellbl">1..n</text>
+
+  <line x1="190" y1="188" x2="190" y2="236" class="rel"/>
+  <text x="198" y="216" class="rellbl">owns</text>
+
+  <line x1="530" y1="188" x2="530" y2="236" class="rel"/>
+  <text x="538" y="216" class="rellbl">1:1 state</text>
+
+  <line x1="890" y1="188" x2="890" y2="236" class="rel"/>
+  <text x="898" y="216" class="rellbl">stats</text>
+
+  <line x1="190" y1="370" x2="190" y2="418" class="rel"/>
+  <text x="198" y="398" class="rellbl">places</text>
+
+  <line x1="530" y1="370" x2="530" y2="418" class="rel"/>
+  <text x="538" y="398" class="rellbl">emits</text>
+
+  <line x1="890" y1="370" x2="890" y2="418" class="rel"/>
+  <text x="898" y="398" class="rellbl">fills</text>
+
+  <line x1="190" y1="568" x2="190" y2="616" class="rel"/>
+  <line x1="530" y1="568" x2="530" y2="616" class="rel"/>
+  <line x1="890" y1="568" x2="890" y2="616" class="rel"/>
+  <line x1="190" y1="734" x2="190" y2="770" class="rel"/>
+  <line x1="530" y1="734" x2="530" y2="770" class="rel"/>
+</svg>
