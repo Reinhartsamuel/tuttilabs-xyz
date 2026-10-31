@@ -263,7 +263,7 @@ main { display: block; }
 
 .record {
   display: grid;
-  grid-template-columns: 132px 1fr;
+  grid-template-columns: 150px 132px 1fr;
   gap: 8px 28px;
   padding: 28px 0;
   border-top: 1px solid var(--line);
@@ -281,6 +281,16 @@ main { display: block; }
 }
 
 .record-meta span { display: block; }
+
+.record-thumb {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  object-fit: cover;
+  max-height: 140px;
+}
 
 .record h3 {
   font-size: 19px;
