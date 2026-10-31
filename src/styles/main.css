@@ -292,8 +292,9 @@ main { display: block; }
   display: block;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  object-fit: cover;
-  max-height: 140px;
+  object-fit: contain;
+  max-height: 160px;
+  background: var(--bg-sunken);
 }
 
 .record h3 {
@@ -463,8 +464,9 @@ main { display: block; }
   display: block;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  object-fit: cover;
-  max-height: 120px;
+  object-fit: contain;
+  max-height: 140px;
+  background: var(--bg-sunken);
 }
 
 .work-link:hover .work-cta { color: var(--fg-dim); }
