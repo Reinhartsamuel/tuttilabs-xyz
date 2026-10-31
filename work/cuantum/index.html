@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cuantum — crypto copy-trading platform — Reinhart Sulilatu</title>
+    <meta
+      name="description"
+      content="Cuantum is a full-stack crypto copy-trading platform: TradingView and strategy signals routed through CCXT, full order lifecycle, PnL settlement, and BSC deposit watching."
+    />
+    <link rel="canonical" href="https://tuttilabs.xyz/work/cuantum/" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">tuttilabs<span class="brand-dim">.xyz</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">menu</button>
+      <nav class="nav" id="site-nav">
+        <a href="/work/">Work</a>
+        <a href="/writing/">Writing</a>
+        <a href="https://github.com/Reinhartsamuel">GitHub</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">LinkedIn</a>
+        <a href="https://x.com/reyyn_hart">X</a>
+      </nav>
+    </div>
+  </header>
+
+    <main>
+      <article class="article wrap">
+        <div class="article-head">
+          <p class="eyebrow"><a href="/work/">Work</a> / Cuantum</p>
+          <h1>Cuantum — crypto copy-trading platform</h1>
+          <p class="post-summary">
+            Signal-based copy trading across centralized exchanges, from TradingView webhooks and
+            strategy engines through CCXT order routing to PnL settlement and BSC deposit watching.
+          </p>
+          <span class="post-meta">
+            <span>2026</span>
+            <span>Node.js · Next.js</span>
+            <span>MongoDB</span>
+            <span>PM2 · Nginx</span>
+          </span>
+        </div>
+
+        <div class="prose">
+          <p>
+            A full-stack platform for signal-based copy trading across centralized exchanges. The
+            backend ingests TradingView webhooks and strategy engine signals (Pine Script → Node),
+            routes them to follower accounts via CCXT with per-exchange credential isolation, and
+            manages the full order lifecycle: entry, take-profit (per-entry, OB-based, multi-level),
+            stop-loss, and PnL harvesting with automated fee collection.
+          </p>
+          <h2>Engineering work</h2>
+          <ul>
+            <li>
+              Fixed a 1.5 GB heap leak from unbounded CCXT instance creation by introducing
+              credential-keyed instance caching with TTL eviction.
+            </li>
+            <li>
+              Eliminated cascading RPC rate-limit storms in the BSC deposit watcher with a scan guard
+              and exponential backoff.
+            </li>
+            <li>
+              Added per-bar signal deduplication to the V2 strategy engine so 4H strategies fire once
+              per bar instead of every 5 seconds.
+            </li>
+            <li>
+              Implemented OB-based and multi-level TP delegation on the runner path, previously only in
+              the webhook path.
+            </li>
+          </ul>
+          <p>
+            Deployed on a VPS with Nginx and PM2 at <code>cuantum.tuttilabs.xyz</code>.
+          </p>
+        </div>
+
+        <div class="diagrams-section">
+          <div class="diagram-card">
+            <h3>System Architecture</h3>
+            <img src="/assets/diagrams/cuantum-architecture.svg" alt="Cuantum system architecture: clients, Express API, strategy runner, exec engine, workers, and external services" />
+            <p class="diagram-caption">
+              Clients (Next.js app, TradingView alerts, admin console) call the Express API over REST
+              and SSE. The strategy runner evaluates V2/V3/Grid-ATR engines with per-bar dedupe, the
+              exec engine routes risk-checked orders to exchanges through CCXT, and background workers
+              own deposit watching, sweeping, and reconciliation. One box runs the single-writer
+              workers so deposits and PnL are never credited twice.
+            </p>
+          </div>
+          <div class="diagram-card">
+            <h3>Database Schema</h3>
+            <img src="/assets/diagrams/cuantum-schema.svg" alt="Cuantum MongoDB schema: User, ExchangeAccount, Strategy, Follower, Order, Signal, FollowerFill, and money ledger collections" />
+            <p class="diagram-caption">
+              Fourteen Mongoose collections. The core chain is User → ExchangeAccount / Follower /
+              Strategy, with Follower binding a user, a strategy, and an exchange account together
+              under explicit capital and leverage limits. Orders and signals hang off strategies and
+              followers. A separate money layer (Deposit, UserCredit, CreditTxn, ProfitLog,
+              WithdrawalRequest) keeps balances and fee settlement auditable and idempotent.
+            </p>
+          </div>
+          <div class="diagram-card">
+            <h3>Stack</h3>
+            <img src="/assets/diagrams/cuantum-stack.svg" alt="Cuantum tech stack: Next.js frontend, Node/Express backend, CCXT trading engine, MongoDB data layer, ethers v6 on BSC, PM2 and Nginx infrastructure" />
+            <p class="diagram-caption">
+              Next.js 14 on the frontend; Node.js and Express on the backend; CCXT plus a Pine
+              Script-derived engine layer for trading; MongoDB Atlas via Mongoose for data; ethers v6
+              against BSC for deposits; PM2, Nginx, and Let's Encrypt on the VPS.
+            </p>
+          </div>
+        </div>
+
+        <div class="article-foot">
+          <div class="link-row">
+            <a href="https://app.cuantum.tuttilabs.xyz">app.cuantum.tuttilabs.xyz</a>
+            <a href="https://cuantum.tuttilabs.xyz">API: cuantum.tuttilabs.xyz</a>
+          </div>
+          <p><a href="/work/">← All work</a></p>
+        </div>
+      </article>
+    </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span data-year>2026</span> Reinhart Sulilatu</div>
+      <div class="footer-links">
+        <a href="https://github.com/Reinhartsamuel">github.com/Reinhartsamuel</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">linkedin.com/in/reinhartsulilatu</a>
+        <a href="https://x.com/reyyn_hart">x.com/reyyn_hart</a>
+        <a href="mailto:smuel.rr@gmail.com">smuel.rr@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

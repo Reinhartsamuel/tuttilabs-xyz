@@ -221,7 +221,14 @@ function inject(file, startMarker, endMarker, html, { emptyNote }) {
 }
 
 function checkShellSync() {
-  for (const file of ['index.html', 'work/index.html', 'writing/index.html']) {
+  for (const file of [
+    'index.html',
+    'work/index.html',
+    'work/lotix/index.html',
+    'work/tokenforge/index.html',
+    'work/cuantum/index.html',
+    'writing/index.html',
+  ]) {
     const path = join(root, file)
     if (!existsSync(path)) continue
     const source = readFileSync(path, 'utf8')
@@ -240,6 +247,9 @@ function writeSitemap(posts) {
   const entries = [
     { loc: `${SITE}/`, priority: '1.0' },
     { loc: `${SITE}/work/`, priority: '0.8' },
+    { loc: `${SITE}/work/lotix/`, priority: '0.7' },
+    { loc: `${SITE}/work/tokenforge/`, priority: '0.7' },
+    { loc: `${SITE}/work/cuantum/`, priority: '0.7' },
     { loc: `${SITE}/writing/`, priority: '0.6' },
     ...posts.map((post) => ({
       loc: `${SITE}/writing/${post.slug}/`,

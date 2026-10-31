@@ -8,7 +8,8 @@ markdown into writing pages.
 
 ```
 index.html              landing page (who I am, links, recent writing)
-work/index.html         project detail: deployments, addresses, design notes
+work/index.html         work index: summaries and links to project pages
+work/<slug>/            project detail pages: deployments, addresses, design notes
 writing/index.html      writing index; the post list is injected at build time
 writing/<slug>/         generated post pages (gitignored — built, not committed)
 posts.config.json       markdown sources that live outside this repo

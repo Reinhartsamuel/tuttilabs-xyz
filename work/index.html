@@ -6,7 +6,7 @@
     <title>Work — Reinhart Sulilatu</title>
     <meta
       name="description"
-      content="Raffle protocol deployments on Robinhood Chain and BSC, security token tooling on Solana, and other repositories."
+      content="Selected work: Lotix, a verifiable raffle protocol on Robinhood Chain and BSC; TokenForge, security token tooling on Solana; and Cuantum, a crypto copy-trading platform."
     />
     <link rel="canonical" href="https://tuttilabs.xyz/work/" />
     <meta name="color-scheme" content="dark" />
@@ -37,13 +37,77 @@
     <main>
       <section class="page-head wrap">
         <p class="eyebrow">Selected work</p>
-        <h1>Contracts, keepers, and the failure paths in between</h1>
+        <h1>Work</h1>
         <p class="lede">
-          Everything here is in production or shipped under my own name. Where a contract is live, the
-          address and the explorer link are listed so anyone can check the claim.
+          Three production systems. This page is the index; each project has its own page with the
+          deployments, architecture, and design decisions.
         </p>
       </section>
 
+      <section class="section wrap">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <span class="more">3 selected</span>
+        </div>
+        <ul class="work-list">
+          <li>
+            <a class="work-link" href="/work/lotix/">
+              <span class="work-index">
+                <span>2026</span>
+                <span>Robinhood Chain</span>
+                <span>BSC</span>
+              </span>
+              <div>
+                <h3 class="work-title">Lotix — verifiable raffle protocol</h3>
+                <p class="work-summary">
+                  Raffles that hold real money: an escrowed prize, stablecoin tickets, and a winner
+                  drawn from verifiable randomness. Live on two chains with keepers and failure paths
+                  designed in.
+                </p>
+                <span class="work-tags">Solidity · Foundry · Chainlink VRF · Quiver</span>
+              </div>
+              <span class="work-cta">Case study →</span>
+            </a>
+          </li>
+          <li>
+            <a class="work-link" href="/work/tokenforge/">
+              <span class="work-index">
+                <span>2026</span>
+                <span>Solana</span>
+                <span>RWA</span>
+              </span>
+              <div>
+                <h3 class="work-title">TokenForge — security token tooling</h3>
+                <p class="work-summary">
+                  Issuance tooling for Indonesian real-world-asset issuers, implementing the Solana
+                  Security Token Standard with sRFC37-compliant transfer hooks.
+                </p>
+                <span class="work-tags">Solana · SSTS · sRFC37 · Token Extensions</span>
+              </div>
+              <span class="work-cta">Case study →</span>
+            </a>
+          </li>
+          <li>
+            <a class="work-link" href="/work/cuantum/">
+              <span class="work-index">
+                <span>2026</span>
+                <span>Node.js</span>
+                <span>Next.js</span>
+                <span>MongoDB</span>
+              </span>
+              <div>
+                <h3 class="work-title">Cuantum — crypto copy-trading platform</h3>
+                <p class="work-summary">
+                  Signal-based copy trading across centralized exchanges, from TradingView webhooks
+                  through CCXT order routing to PnL settlement and BSC deposit watching.
+                </p>
+                <span class="work-tags">Node.js · Express · Next.js · MongoDB · CCXT</span>
+              </div>
+              <span class="work-cta">Case study →</span>
+            </a>
+          </li>
+        </ul>
+      </section>
 
       <section class="section wrap">
         <div class="section-head">
@@ -73,184 +137,6 @@
           <div class="logo-item">
             <img src="/assets/logos/robinhood.png" alt="Robinhood" />
             <span>Robinhood</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section wrap" id="lotix">
-        <div class="record record-flush">
-          <div class="record-meta">
-            <span>2026</span>
-            <span>Robinhood Chain</span>
-            <span>BSC</span>
-            <span>Solidity · Foundry</span>
-          </div>
-          <div>
-            <h3>Lotix — verifiable raffle protocol</h3>
-            <p>
-              Anyone can create a raffle by escrowing a prize (an ERC-20 amount or an ERC-721 NFT) and
-              setting a ticket price, a ticket cap, and a duration. Entrants buy tickets in a
-              stablecoin. When the raffle expires, a draw is requested from a verifiable randomness
-              source and the winner is picked from the ticket ranges.
-            </p>
-            <p>
-              The draw is the easy part. A randomness provider can stall, a winner can be blacklisted, a
-              prize token can pause, and the contract is built so that none of those end with the prize
-              stuck on it.
-            </p>
-
-            <div class="deploys">
-              <div class="deploy">
-                <span class="deploy-name">LotteryCore</span>
-                <span class="deploy-net">Robinhood · 4663</span>
-                <span class="addr">
-                  <a href="https://robinhoodchain.blockscout.com/address/0x04491a792C82Dd66C5993b89E6E5044bF0da797d">0x04491a792C82Dd66C5993b89E6E5044bF0da797d</a>
-                  <button class="copy" type="button" data-copy="0x04491a792C82Dd66C5993b89E6E5044bF0da797d" aria-label="Copy LotteryCore address">copy</button>
-                </span>
-              </div>
-              <div class="deploy">
-                <span class="deploy-name">RaffleCore</span>
-                <span class="deploy-net">BSC · 56</span>
-                <span class="addr">
-                  <a href="https://bscscan.com/address/0xd990ca6f045f86df32c115deee4d24e4a911993b">0xd990ca6f045f86df32c115deee4d24e4a911993b</a>
-                  <button class="copy" type="button" data-copy="0xd990ca6f045f86df32c115deee4d24e4a911993b" aria-label="Copy RaffleCore address">copy</button>
-                </span>
-              </div>
-            </div>
-
-            <ul>
-              <li>
-                Two randomness backends, one accounting engine. Robinhood Chain has no Chainlink VRF
-                deployment, so it runs Quiver with a resolver-gated draw; BSC runs Chainlink VRF v2.5
-                through a permissionless upkeep.
-              </li>
-
-            <div style="margin: 24px 0;">
-              <h4 style="font-size: 13px; font-weight: 600; margin: 0 0 12px; color: var(--fg-dim); font-family: var(--mono);">Architecture</h4>
-              <img src="/assets/diagrams/architecture.svg" alt="Lotix Architecture" style="width: 100%; border: 1px solid var(--line); border-radius: 6px; background: var(--bg-raised);" />
-            </div>
-              <li>
-                Resolution is driven by keepers I operate, not by Chainlink Automation. On Robinhood
-                Chain that is a Node service with two cron jobs (resolve, then settle from the
-                randomness callback); on BSC it is a shell-driven loop.
-              </li>
-              <li>
-                Every draw request folds in a fresh salt, so a colluding randomness provider can stall a
-                raffle but cannot grind for a winner it likes.
-              </li>
-              <li>
-                Payouts are push-with-escrow-fallback: if a transfer fails, the funds move to a claimable
-                balance instead of reverting the settlement and freezing the raffle.
-              </li>
-              <li>
-                Cancelled raffles refund with O(1) pull accounting, and an underfilled raffle returns the
-                prize to the host while still drawing the ticket pool, so nobody's money is stranded.
-              </li>
-            </ul>
-
-            <div class="link-row">
-              <a href="https://github.com/Reinhartsamuel/Verifiable-Randomness-Raffle-Protocol">Source</a>
-              <a href="https://lotix.fun">lotix.fun</a>
-              <a href="/writing/raffle-protocol-walkthrough/">Design walkthrough</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section wrap" id="tokenforge">
-        <div class="record record-flush">
-          <div class="record-meta">
-            <span>2026</span>
-            <span>Solana</span>
-            <span>RWA</span>
-          </div>
-          <div>
-            <h3>TokenForge — security token tooling</h3>
-            <p>
-              Issuance tooling for Indonesian real-world-asset issuers. It implements the Solana
-              Security Token Standard (SSTS, the Halborn and Securitize design) with sRFC37-compliant
-              transfer hooks, so a token can carry regulatory rules like transfer restrictions and
-              holder eligibility at the token layer instead of in an off-chain database.
-            </p>
-            <p>
-              The repository is private while it is used with clients. The public product site shows
-              what it does.
-            </p>
-            <div class="link-row">
-              <a href="https://tokenforge.tuttilabs.xyz">tokenforge.tuttilabs.xyz</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section wrap" id="cuantum">
-        <div class="record record-flush">
-          <div class="record-meta">
-            <span>2026</span>
-            <span>Node.js · Next.js · MongoDB</span>
-            <span>PM2 · Nginx</span>
-          </div>
-          <div>
-            <h3>Cuantum — crypto copy-trading platform</h3>
-            <p>
-              A full-stack platform for signal-based copy trading across centralized exchanges. The backend
-              ingests TradingView webhooks and strategy engine signals (Pine Script → Node), routes them
-              to follower accounts via CCXT with per-exchange credential isolation, and manages the full
-              order lifecycle: entry, take-profit (per-entry, OB-based, multi-level), stop-loss, and PnL
-              harvesting with automated fee collection.
-            </p>
-            <p>
-              Key engineering work: fixed a 1.5 GB heap leak from unbounded CCXT instance creation by
-              introducing credential-keyed instance caching with TTL eviction; eliminated cascading RPC
-              rate-limit storms in the BSC deposit watcher with a scan guard and exponential backoff;
-              added per-bar signal deduplication to the V2 strategy engine so 4H strategies fire once per
-              bar instead of every 5 seconds; implemented OB-based and multi-level TP delegation on the
-              runner path (previously only in the webhook path). Deployed on VPS with Nginx + PM2 at
-              <code>cuantum.tuttilabs.xyz</code>.
-            </p>
-            <div class="link-row">
-              <a href="https://app.cuantum.tuttilabs.xyz">app.cuantum.tuttilabs.xyz</a>
-              <a href="https://cuantum.tuttilabs.xyz">API: cuantum.tuttilabs.xyz</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section wrap" id="cuantum-diagrams">
-        <div class="section-head">
-          <h2>Cuantum — architecture, data, and stack</h2>
-        </div>
-        <div class="diagrams-section">
-          <div class="diagram-card">
-            <h3>System Architecture</h3>
-            <img src="/assets/diagrams/cuantum-architecture.svg" alt="Cuantum system architecture: clients, Express API, strategy runner, exec engine, workers, and external services" />
-            <p class="diagram-caption">
-              Clients (Next.js app, TradingView alerts, admin console) call the Express API over REST and SSE.
-              The strategy runner evaluates V2/V3/Grid-ATR engines with per-bar dedupe, the exec engine routes
-              risk-checked orders to exchanges through CCXT, and background workers own deposit watching,
-              sweeping, and reconciliation. One box runs the single-writer workers so deposits and PnL are
-              never credited twice.
-            </p>
-          </div>
-          <div class="diagram-card">
-            <h3>Database Schema</h3>
-            <img src="/assets/diagrams/cuantum-schema.svg" alt="Cuantum MongoDB schema: User, ExchangeAccount, Strategy, Follower, Order, Signal, FollowerFill, and money ledger collections" />
-            <p class="diagram-caption">
-              Fourteen Mongoose collections. The core chain is User → ExchangeAccount / Follower / Strategy,
-              with Follower binding a user, a strategy, and an exchange account together under explicit capital
-              and leverage limits. Orders and signals hang off strategies and followers. A separate money layer
-              (Deposit, UserCredit, CreditTxn, ProfitLog, WithdrawalRequest) keeps balances and fee settlement
-              auditable and idempotent.
-            </p>
-          </div>
-          <div class="diagram-card">
-            <h3>Stack</h3>
-            <img src="/assets/diagrams/cuantum-stack.svg" alt="Cuantum tech stack: Next.js frontend, Node/Express backend, CCXT trading engine, MongoDB data layer, ethers v6 on BSC, PM2 and Nginx infrastructure" />
-            <p class="diagram-caption">
-              Next.js 14 on the frontend; Node.js and Express on the backend; CCXT plus a Pine Script-derived
-              engine layer for trading; MongoDB Atlas via Mongoose for data; ethers v6 against BSC for deposits;
-              PM2, Nginx, and Let's Encrypt on the VPS.
-            </p>
           </div>
         </div>
       </section>
