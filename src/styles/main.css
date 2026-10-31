@@ -293,7 +293,6 @@ main { display: block; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   object-fit: contain;
-  max-height: 110px;
   background: var(--bg-sunken);
 }
 
@@ -465,7 +464,6 @@ main { display: block; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   object-fit: contain;
-  max-height: 100px;
   background: var(--bg-sunken);
 }
 
