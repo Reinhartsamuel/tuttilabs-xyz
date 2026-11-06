@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Reinhart Sulilatu — smart contract engineer</title>
+    <title>Reinhart Sulilatu — Financial Infrastructure Engineer</title>
     <meta
       name="description"
-      content="Reinhart Sulilatu writes smart contracts and the off-chain services that keep them honest: escrow, verifiable randomness, settlement, and protocol keepers."
+      content="Reinhart Sulilatu builds reliable financial software across trading systems, payments, and blockchain applications — backend services, transaction workflows, and on-chain components that keep assets and state in sync."
     />
     <link rel="canonical" href="https://tuttilabs.xyz/" />
     <meta name="color-scheme" content="dark" />
@@ -27,6 +27,8 @@
       <nav class="nav" id="site-nav">
         <a href="/work/">Work</a>
         <a href="/writing/">Writing</a>
+        <a href="/financial-systems/">Financial systems</a>
+        <a href="/about/">About</a>
         <a href="https://github.com/Reinhartsamuel">GitHub</a>
         <a href="https://www.linkedin.com/in/reinhartsulilatu">LinkedIn</a>
         <a href="https://x.com/reyyn_hart">X</a>
@@ -36,17 +38,18 @@
 
     <main>
       <section class="hero wrap">
-        <p class="eyebrow">Smart contract engineer</p>
+        <p class="eyebrow">Financial Infrastructure Engineer | Backend, Fintech & Blockchain</p>
         <h1>Reinhart Sulilatu</h1>
         <p class="lede">
-          I write smart contracts and the off-chain services that keep them honest. Most of my work is
-          on EVM chains: escrow, verifiable randomness, settlement, and the keepers that push a stalled
-          protocol to its next state.
+          I build reliable financial software across trading systems, payments, and blockchain
+          applications — the backend services, transaction workflows, and on-chain components
+          that keep assets and state in sync.
         </p>
         <p class="lede">
-          The backend half is the half I like. The contract is usually the smallest piece of the
-          system; the resolution keeper, the indexer, and the failure paths around it are where the
-          time actually goes.
+          Backend-first engineer working across Node.js/TypeScript, PostgreSQL, exchange
+          integrations, payment workflows, Solidity, and EVM infrastructure. Interested in
+          stablecoins, digital assets, and financial products. Open to remote founding-engineer
+          and backend roles.
         </p>
         <div class="status-line">
           <span class="dot" aria-hidden="true"></span>
@@ -54,43 +57,28 @@
         </div>
       </section>
 
-
       <section class="section wrap">
         <div class="section-head">
-          <h2>Stacks I have worked with</h2>
-        </div>
-        <div class="logos-section">
-          <div class="logo-item">
-            <img src="/assets/logos/usdg.webp" alt="USDG" />
-            <span>USDG</span>
-          </div>
-          <div class="logo-item">
-            <img src="/assets/logos/usdc.svg" alt="USDC" />
-            <span>USDC</span>
-          </div>
-          <div class="logo-item">
-            <img src="/assets/logos/bsc.svg" alt="BSC" />
-            <span>BSC</span>
-          </div>
-          <div class="logo-item">
-            <img src="/assets/logos/robinhood.png" alt="Robinhood" />
-            <span>Robinhood</span>
-          </div>
-          <div class="logo-item">
-            <img src="/assets/logos/chainlink.svg" alt="Chainlink" />
-            <span>Chainlink</span>
-          </div>
-          <div class="logo-item">
-            <img src="/assets/logos/quiver.png" alt="Quiver" />
-            <span>Quiver</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section wrap">
-        <div class="section-head">
-          <h2>Work</h2>
+          <h2>Selected work</h2>
           <a class="more" href="/work/">All work →</a>
+        </div>
+
+        <div class="record">
+          <div class="thumb-wrap"><img class="record-thumb" src="/assets/screenshots/cuantum.png" alt="Cuantum landing page preview" loading="lazy" /></div>
+          <div class="record-meta">
+            <span>2026</span>
+            <span>Node.js · Next.js</span>
+            <span>MongoDB</span>
+          </div>
+          <div>
+            <h3><a href="/work/cuantum/">Cuantum — crypto copy-trading platform</a></h3>
+            <p>
+              Signal-based copy trading across centralized exchanges: a Node/Express backend routes
+              TradingView webhooks and strategy signals to follower accounts via CCXT, with full
+              order-lifecycle handling, take-profit management, PnL settlement, and BSC deposit
+              watching.
+            </p>
+          </div>
         </div>
 
         <div class="record">
@@ -101,11 +89,11 @@
             <span>BSC</span>
           </div>
           <div>
-            <h3><a href="/work/lotix/">Lotix — raffle protocol</a></h3>
+            <h3><a href="/work/lotix/">Lotix — verifiable raffle protocol</a></h3>
             <p>
-              Raffles that hold real money. A prize is escrowed (ERC-20 or ERC-721), tickets are sold in
-              a stablecoin, and the winner comes from on-chain verifiable randomness. The host cannot
-              enter its own raffle and the operator cannot pick the winner.
+              Raffles that hold real money. A prize is escrowed (ERC-20 or ERC-721), tickets are sold
+              in a stablecoin, and the winner comes from on-chain verifiable randomness. Live on two
+              chains with keepers and failure paths designed in.
             </p>
           </div>
         </div>
@@ -123,45 +111,21 @@
               Issuance tooling for Indonesian real-world-asset issuers, built on the Solana Security
               Token Standard with sRFC37-compliant transfer hooks.
             </p>
-            <p>
-              <a href="https://tokenforge.tuttilabs.xyz">tokenforge.tuttilabs.xyz →</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="record">
-          <div class="thumb-wrap"><img class="record-thumb" src="/assets/screenshots/cuantum.png" alt="Cuantum landing page preview" loading="lazy" /></div>
-          <div class="record-meta">
-            <span>2026</span>
-            <span>Node.js</span>
-            <span>Next.js</span>
-          </div>
-          <div>
-            <h3><a href="/work/cuantum/">Cuantum — crypto copy-trading platform</a></h3>
-            <p>
-              Signal-based copy trading across centralized exchanges: a Node/Express backend routes
-              TradingView webhooks and strategy-engine signals to follower accounts via CCXT, with full
-              order-lifecycle handling, take-profit management, PnL settlement, and BSC deposit watching.
-            </p>
-            <p>
-              <a href="https://app.cuantum.tuttilabs.xyz">app.cuantum.tuttilabs.xyz →</a>
-            </p>
           </div>
         </div>
 
         <div class="record record-no-thumb">
           <div class="record-meta">
-            <span>Ongoing</span>
-            <span>EVM</span>
-            <span>TypeScript</span>
+            <span>How I build</span>
+            <span>Backend + on-chain</span>
           </div>
           <div>
-            <h3>How I work</h3>
+            <h3>How I build</h3>
             <ul>
-              <li>Contracts in Solidity with Foundry, OpenZeppelin, and fork tests against live chain state.</li>
-              <li>Randomness through Chainlink VRF v2.5 and Quiver, with the failure path designed before the happy path.</li>
-              <li>Off-chain in TypeScript: keepers, indexers, and cron jobs that reconcile contract state.</li>
-              <li>Enough frontend to wire a contract to a UI properly, and to notice when an interface lies about what the chain will accept.</li>
+              <li>Backend services, transaction workflows, and exchange integrations in Node.js/TypeScript and PostgreSQL.</li>
+              <li>Smart contracts in Solidity with Foundry: escrow invariants, verifiable randomness, keeper automation.</li>
+              <li>Off-chain automation: keepers, indexers, and cron jobs that reconcile contract state.</li>
+              <li>Reliability themes: idempotency, retries, reconciliation, observability, and operational safety.</li>
             </ul>
           </div>
         </div>
@@ -185,7 +149,6 @@
         </ul>
       </section>
 
-
       <section class="section wrap">
         <div class="section-head">
           <h2>Architecture & Flow</h2>
@@ -201,7 +164,6 @@
           </div>
         </div>
       </section>
-
 
       <section class="section wrap">
         <div class="section-head">

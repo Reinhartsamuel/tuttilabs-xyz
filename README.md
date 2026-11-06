@@ -1,8 +1,8 @@
 # tuttilabs.xyz
 
-Source for my portfolio and writing site. Static output, Vite + TypeScript, no
-UI framework: the pages are hand-written HTML, and a small build script turns
-markdown into writing pages.
+Portfolio and writing site for Reinhart Sulilatu — Financial Infrastructure Engineer | Backend, Fintech & Blockchain.
+
+Source for my portfolio and writing site. Static output, Vite + TypeScript, no UI framework: the pages are hand-written HTML, and a small build script turns markdown into writing pages.
 
 ## What is in here
 
@@ -31,10 +31,7 @@ npm run preview    # serve dist/ locally
 npm run deploy     # build, rsync to /var/www/tuttilabs, reload nginx, certbot
 ```
 
-`npm run build` is the acceptance gate: it fails if the TypeScript does not
-typecheck, and `scripts/gen-posts.mjs` warns loudly if a post source is missing
-or if the header/footer markup in the static pages has drifted from
-`scripts/shell.mjs`.
+`npm run build` is the acceptance gate: it fails if the TypeScript does not typecheck, and `scripts/gen-posts.mjs` warns loudly if a post source is missing or if the header/footer markup in the static pages has drifted from `scripts/shell.mjs`.
 
 ## Writing a post
 
@@ -52,31 +49,18 @@ Two ways, both end up as a static page at `/writing/<slug>/`:
    Body in markdown.
    ```
 
-2. **A draft that lives somewhere else.** Add an entry to `posts.config.json`
-   under `sources` with `slug`, `title`, `date`, `summary`, `sourceFile`
-   (absolute path) and `sourceNote`. The draft stays the single source of truth;
-   the build reads it and renders the page. Nothing is copied by hand, so the
-   site and the draft cannot drift apart.
+2. **A draft that lives somewhere else.** Add an entry to `posts.config.json` under `sources` with `slug`, `title`, `date`, `summary`, `sourceFile` (absolute path) and `sourceNote`. The draft stays the single source of truth; the build reads it and renders the page. Nothing is copied by hand, so the site and the draft cannot drift apart.
 
-Posts are sorted newest first. The list on `writing/index.html` and the recent
-list on the landing page are injected between HTML comment markers, so both
-pages work without JavaScript.
+Posts are sorted newest first. The list on `writing/index.html` and the recent list on the landing page are injected between HTML comment markers, so both pages work without JavaScript.
 
 ## Deployment
 
-Served by the nginx already on this VPS, root `/var/www/tuttilabs`, vhost
-`deploy/nginx/tuttilabs.xyz`. The apex and `www` share one server block. The
-`cuantum.tuttilabs.xyz` API proxy and the winr vhost are separate files and are
-not touched.
+Served by the nginx already on this VPS, root `/var/www/tuttilabs`, vhost `deploy/nginx/tuttilabs.xyz`. The apex and `www` share one server block. The `cuantum.tuttilabs.xyz` API proxy and the winr vhost are separate files and are not touched.
 
-TLS is issued with certbot (`--nginx`, HTTP-01). That needs both names to resolve
-to this host first, and the Cloudflare records must be **DNS only** (grey cloud)
-for the first issuance. `scripts/deploy.sh` prints the exact records to create
-when they are missing, and skips certbot rather than failing.
+TLS is issued with certbot (`--nginx`, HTTP-01). That needs both names to resolve to this host first, and the Cloudflare records must be **DNS only** (grey cloud) for the first issuance. `scripts/deploy.sh` prints the exact records to create when they are missing, and skips certbot rather than failing.
 
 ## Notes
 
 - No analytics, no tracking, no external requests except Google Fonts (Geist).
-- No gradients, no glow, no decorative colour. The only accent in the stylesheet
-  is the green dot used to mark live contracts.
+- No gradients, no glow, no decorative colour. The only accent in the stylesheet is the green dot used to mark live contracts.
 - Nothing here reads environment files or key material.

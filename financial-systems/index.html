@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Financial systems — Reinhart Sulilatu</title>
+    <meta
+      name="description"
+      content="Recurring engineering themes in financial software: transaction state, idempotency, reconciliation, retries, observability, and operational safety."
+    />
+    <link rel="canonical" href="https://tuttilabs.xyz/financial-systems/" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">tuttilabs<span class="brand-dim">.xyz</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">menu</button>
+      <nav class="nav" id="site-nav">
+        <a href="/work/">Work</a>
+        <a href="/writing/">Writing</a>
+        <a href="/financial-systems/">Financial systems</a>
+        <a href="/about/">About</a>
+        <a href="https://github.com/Reinhartsamuel">GitHub</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">LinkedIn</a>
+        <a href="https://x.com/reyyn_hart">X</a>
+      </nav>
+    </div>
+  </header>
+
+    <main>
+      <article class="article wrap">
+        <div class="article-head">
+          <p class="eyebrow">Financial systems</p>
+          <h1>How I think about money software</h1>
+          <p class="post-summary">
+            Recurring engineering themes across trading, payments, and blockchain work: transaction
+            state, idempotency, reconciliation, retries, observability, and operational safety.
+          </p>
+        </div>
+
+        <div class="prose">
+          <h2>Transaction state</h2>
+          <p>
+            Money does not tolerate silent failures. Every payment, trade, or transfer is modeled
+            as a state machine with defined transitions — initiated, confirmed, failed, refunded —
+            so no action can be applied twice or dropped without a trace.
+          </p>
+
+          <h2>Idempotency</h2>
+          <p>
+            Retries are inevitable in distributed financial systems. Keys on every request let a
+            receiver recognize a duplicate and return the same result instead of executing twice.
+            Idempotency is a property of the data model, not an afterthought.
+          </p>
+
+          <h2>Reconciliation</h2>
+          <p>
+            Internal ledgers drift from exchanges, banks, and chains. A reconciliation job compares
+            the two and surfaces differences — unmatched deposits, missing fills, fee discrepancies —
+            before they become customer issues.
+          </p>
+
+          <h2>Retries and failure paths</h2>
+          <p>
+            RPC nodes, exchange APIs, and block confirmations fail. The happy path is easy; the
+            failure path — partial fills, stale state, paused tokens, rate limits — is where the
+            work is. Each path is designed before it is needed.
+          </p>
+
+          <h2>Observability</h2>
+          <p>
+            You cannot operate what you cannot see. Order lifecycle, deposit watcher lag, keeper
+            job health, and settlement latency are logged and alerted so anomalies surface before
+            users do.
+          </p>
+
+          <h2>Operational safety</h2>
+          <p>
+            No secrets in repositories. No production endpoints with credentials committed. Every
+            featured repo carries a status label — production, prototype, or archived — so nothing
+            is mistaken for something it is not.
+          </p>
+        </div>
+
+        <div class="article-foot">
+          <p><a href="/">← Home</a></p>
+        </div>
+      </article>
+    </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span data-year>2026</span> Reinhart Sulilatu</div>
+      <div class="footer-links">
+        <a href="https://github.com/Reinhartsamuel">github.com/Reinhartsamuel</a>
+        <a href="https://www.linkedin.com/in/reinhartsulilatu">linkedin.com/in/reinhartsulilatu</a>
+        <a href="https://x.com/reyyn_hart">x.com/reyyn_hart</a>
+        <a href="mailto:smuel.rr@gmail.com">smuel.rr@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import { readdirSync, statSync } from 'node:fs'
+import { readdirSync, statSync, existsSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
 /**
@@ -19,10 +19,17 @@ function htmlInputs(dir: string, base = dir): Record<string, string> {
   return out
 }
 
+const inputs = htmlInputs('.')
+// Ensure new writing pages are picked up even if Vite caches the input scan
+const extra = join('writing', 'trading-reconciliation', 'index.html')
+if (existsSync(extra) && !inputs['writing/trading-reconciliation/index']) {
+  inputs['writing/trading-reconciliation/index'] = extra
+}
+
 export default defineConfig({
   build: {
     target: 'es2022',
-    rollupOptions: { input: htmlInputs('.') },
+    rollupOptions: { input: inputs },
     assetsInlineLimit: 2048,
   },
   server: { port: 5173, strictPort: false },
